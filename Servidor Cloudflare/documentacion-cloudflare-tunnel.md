@@ -145,7 +145,7 @@ Si el servidor se apaga y posteriormente vuelve a estar disponible, el encargado
    ```
 
 6. Identificar la dirección más reciente que termina en `trycloudflare.com`.
-7. Compartir el nuevo enlace con el docente y los usuarios.
+7. Compartir el nuevo enlace con los usuarios.
 
 **Importante:** Quick Tunnel genera una dirección temporal. Después de reiniciar el túnel puede generarse una dirección diferente. Por eso, no basta con conservar el enlace anterior: el encargado debe consultar los registros y comunicar la dirección actualizada.
 
@@ -160,16 +160,6 @@ La recuperación de la máquina virtual también depende de que el servidor fís
 - El túnel necesita que el contenedor Nginx esté activo y que el servicio local responda en `127.0.0.1:8080`.
 - Las advertencias relacionadas con el proxy ICMP que aparecieron en los registros no impidieron establecer la conexión HTTP del túnel. La confirmación relevante fue `Registered tunnel connection` y la prueba de acceso al simulador.
 
-## 9. Evidencias
-
-Añadir las capturas de pantalla tomadas durante la práctica en los siguientes espacios:
-
-1. **Creación del contenedor:** salida del comando `docker run` que crea `cloudflare-tunnel`.
-2. **Enlace generado:** registros de `docker logs cloudflare-tunnel` donde aparece la dirección `trycloudflare.com`.
-3. **Contenedores activos:** salida de `docker ps` mostrando Nginx, Cloudflare y Twingate.
-4. **Política de reinicio:** resultado de `docker inspect` mostrando `unless-stopped`.
-5. **Acceso público:** navegador mostrando el simulador mediante el enlace de Cloudflare.
-
-## 10. Conclusión
+## 9. Conclusión
 
 Se consiguió publicar temporalmente en Internet el simulador web que ya estaba alojado en Nginx dentro de Alpine Linux. Cloudflare Tunnel permitió realizar esta publicación sin abrir puertos entrantes en el router ni contratar un dominio propio. También se configuraron políticas de reinicio automático para los contenedores y se documentó el procedimiento para recuperar el servicio y compartir el nuevo enlace cuando sea necesario.
